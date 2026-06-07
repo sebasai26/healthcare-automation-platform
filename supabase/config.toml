@@ -1,0 +1,17 @@
+# Global Config
+project_id = "your-project-id"
+
+[functions.create-admin-user]
+verify_jwt = true
+
+[functions.analyze-dashboard]
+verify_jwt = true
+
+[functions.birthday-inactive-patients]
+verify_jwt = true
+
+[functions.ai-consejos]
+verify_jwt = true
+
+[functions.generate-monthly-objective]
+verify_jwt = true

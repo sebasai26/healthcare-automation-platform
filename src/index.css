@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    --primary: 172 50% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 220 20% 25%;
+
+    --muted: 210 15% 96%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 172 40% 95%;
+    --accent-foreground: 172 50% 30%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 150 50% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-muted: 150 40% 95%;
+
+    --warning: 35 90% 55%;
+    --warning-foreground: 0 0% 100%;
+    --warning-muted: 35 80% 95%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 172 50% 40%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 172 50% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 96%;
+    --sidebar-accent-foreground: 172 50% 40%;
+    --sidebar-border: 220 15% 92%;
+    --sidebar-ring: 172 50% 40%;
+    
+    --header-background: 0 0% 100%;
+    --header-foreground: 220 20% 15%;
+
+    /* Custom tokens */
+    --kpi-positive: 150 50% 45%;
+    --kpi-negative: 220 10% 50%; /* Neutral color - same as kpi-neutral */
+    --kpi-neutral: 220 10% 50%;
+    
+    --chart-bar: 172 50% 45%;
+    --chart-bar-bg: 172 30% 92%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 210 20% 95%;
+    --card: 220 18% 13%;
+    --card-foreground: 210 20% 95%;
+    --popover: 220 18% 13%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 172 50% 50%;
+    --primary-foreground: 220 20% 10%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 210 20% 90%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 172 40% 20%;
+    --accent-foreground: 172 50% 70%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 150 50% 50%;
+    --success-foreground: 0 0% 100%;
+    --success-muted: 150 40% 15%;
+    --warning: 35 80% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-muted: 35 70% 15%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 172 50% 50%;
+    --sidebar-background: 220 18% 12%;
+    --sidebar-foreground: 210 15% 75%;
+    --sidebar-primary: 172 50% 50%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 172 40% 18%;
+    --sidebar-accent-foreground: 172 50% 70%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 172 50% 50%;
+    --kpi-positive: 150 50% 55%;
+    --kpi-negative: 220 10% 60%; /* Neutral color - same as kpi-neutral */
+    --kpi-neutral: 220 10% 60%;
+    --chart-bar: 172 50% 55%;
+    --chart-bar-bg: 172 30% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-black;
+  }
+}
+
+@layer components {
+  .kpi-card {
+    @apply bg-card border border-border rounded-xl p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .kpi-value {
+    @apply text-2xl md:text-3xl font-bold text-foreground;
+  }
+
+  .kpi-label {
+    @apply text-sm font-semibold text-foreground/80 uppercase tracking-wider;
+  }
+
+  .kpi-trend-positive {
+    @apply text-[hsl(var(--kpi-positive))] font-medium;
+  }
+
+  .kpi-trend-negative {
+    @apply text-[hsl(var(--kpi-negative))] font-medium;
+  }
+
+  .section-title {
+    @apply text-lg font-bold text-black mb-4 tracking-tight uppercase;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors duration-150;
+  }
+
+  .nav-item-active {
+    @apply bg-sidebar-accent text-sidebar-accent-foreground font-medium;
+  }
+
+  .progress-bar {
+    @apply h-3 bg-[hsl(var(--chart-bar-bg))] rounded-full overflow-hidden;
+  }
+
+  .progress-bar-fill {
+    @apply h-full bg-[hsl(var(--chart-bar))] rounded-full transition-all duration-500 ease-out;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(10px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+}
